@@ -33,7 +33,7 @@ func (h *HTTP) Request(ctx context.Context, method string, url goja.Value, args 
 		return h.HTTP.Request(ctx, method, url, args...)
 	}
 
-	orig, err := http.ToURL(url)
+	orig, err := httpext.NewURL(url.String(), "Url") // http.ToURL(url)
 	if err != nil {
 		return nil, err
 	}
